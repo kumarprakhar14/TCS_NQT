@@ -1,0 +1,4 @@
+1. Find max of 2 numbers
+2. Find max of 3 numbers
+3. Find sum of first n natural numbers
+4. Check if a given year is a leap year

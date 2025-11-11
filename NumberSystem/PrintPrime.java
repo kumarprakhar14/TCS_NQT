@@ -33,10 +33,11 @@ import java.util.*;
 // }
 
 // Better approach -> 
+
 class PrintPrime {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
+        int num = (int)1e6; //sc.nextInt();
         boolean prime[] = new boolean[num+1];
         // Fill the whole array with true
         Arrays.fill(prime, true);
@@ -45,16 +46,30 @@ class PrintPrime {
 
         for(int i=2; i<=sq; i++) {
             if(prime[i] == true) {
-                for(int j=i; j<= i*2; j++) {
+                for(int j=2*i; j<=num; j+=i) {
                     prime[j] = false;
                 }
             }
         }
 
-        for(int i=0; i<prime.length; i++) {
-            if(prime[i] == true){
-                System.out.println(i);
-            }
+        // for(int i=0; i<prime.length; i++) {
+        //     if(prime[i] == true){
+        //         System.out.println(i);
+        //     }
+        // }
+
+        // or, 
+        // Since we have no idea about the no. of prime numbers, 
+        // we cannot declare size of an array
+        // Thus, using arraylist
+
+        ArrayList<Integer> primelist = new ArrayList<>();
+        primelist.add(-1);
+        for(int i=2; i<=num; i++) {
+            if(prime[i] == true)
+            primelist.add(i);
         }
+
+        System.out.println(primelist);
     }
 }
